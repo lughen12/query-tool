@@ -12,6 +12,7 @@ module NinetySeconds
       # @param options [Hash] The hash to be presented
       # @return [String] The formatted text in JSON
       def self.present(options)
+        return '' if options.nil?
         JSON.pretty_generate(options)
       end
     end

@@ -8,11 +8,14 @@ module NinetySeconds
       # @param options [Hash] The hash to be presented
       # @return [String] The formatted text in String
       def self.present(options)
-        lines = []
-        key_length = options.keys.max_by(&:length).length + 2
+        return '' if options.nil?
+        return options unless options.class == Hash
 
+        lines = []
+        # Find min key length to format
+        key_length = options.keys.max_by(&:length).length + 2
         options.each do |key, value|
-          lines << "#{format_length(key, key_length)}: #{value}"
+          lines << "#{format_length(key.to_s, key_length)}: #{value}"
         end
         lines.join("\n")
       end
