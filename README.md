@@ -61,3 +61,7 @@ The project is splitted into these following directories:
 
 5. Robustness
 - Report errors for invalid commands, missing resources, invalid resources, invalid format, invalid query ...
+
+6. Extras
+- `-f` option to return different format. It is good if user can select output format that they need
+- Pretty print results, errors with color. This will made CLI output easier to read
