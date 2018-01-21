@@ -3,7 +3,7 @@ require 'require_all'
 
 require_all 'services'
 
-DELIMETER = "\n--------------------------------\n".freeze
+DELIMETER = '====='.freeze
 
 options = NinetySeconds::Services::CommandService.from_args(ARGV)
 exit if ARGV.include?('-h') || ARGV.include?('--help')
@@ -16,7 +16,7 @@ unless query.valid?
 end
 
 results = query.execute
-puts "----------RESULTS (#{results.length})-----------".green
+puts "== RESULTS (#{results.length}) ==".green
 
 if results.empty?
   puts 'No result found.'

@@ -7,7 +7,7 @@ describe NinetySeconds::Presenters::JsonPresenter do
   describe '#present' do
     context 'when valid hash' do
       it 'return json format' do
-        object = { key: 'value', key_2: 'value 2'}
+        object = { key: 'value', key_2: 'value 2' }
         expect(subject.present(object)).to eq(
           "{\n  \"key\": \"value\",\n  \"key_2\": \"value 2\"\n}"
         )
@@ -27,5 +27,4 @@ describe NinetySeconds::Presenters::JsonPresenter do
       end
     end
   end
-
 end

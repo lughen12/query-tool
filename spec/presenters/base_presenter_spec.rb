@@ -7,7 +7,7 @@ describe NinetySeconds::Presenters::Base do
   describe '#present' do
     context 'when valid hash' do
       it 'return value from to_s' do
-        object = { key: 'value', key_2: 'value 2'}
+        object = { key: 'value', key_2: 'value 2' }
         expect(subject.present(object)).to eq(
           '{:key=>"value", :key_2=>"value 2"}'
         )
@@ -20,5 +20,4 @@ describe NinetySeconds::Presenters::Base do
       end
     end
   end
-
 end

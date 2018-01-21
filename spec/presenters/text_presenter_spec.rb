@@ -7,7 +7,7 @@ describe NinetySeconds::Presenters::TextPresenter do
   describe '#present' do
     context 'when valid hash' do
       it 'return pretty text format' do
-        object = { key: 'value', key_2: 'value 2'}
+        object = { key: 'value', key_2: 'value 2' }
         expect(subject.present(object)).to eq(
           "key    : value\nkey_2  : value 2"
         )
@@ -27,5 +27,4 @@ describe NinetySeconds::Presenters::TextPresenter do
       end
     end
   end
-
 end

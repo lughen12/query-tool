@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'colorize'
+gem 'awesome_print'
 gem 'json'
 gem 'require_all'
 gem 'rspec'

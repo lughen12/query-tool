@@ -1,2 +1,9 @@
 Metrics/LineLength:
   Max: 120
+
+Metrics/BlockLength:
+  Exclude:
+    # Rspec files have large blocks
+    - 'spec/**/*'
+    # optparse has large block
+    - 'services/command_service.rb'

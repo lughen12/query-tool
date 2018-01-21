@@ -7,22 +7,27 @@ module NinetySeconds
       # Query record that EXACT match ALL condition in options hash
       # Ie: { name: 'Hung', age: 25 } will query for record with name="Hung" and age=25
       # @param options [Hash] The hash that is used to query
-      # @return [Array<Hash>] The records that satified options
-      def self.where(options)
-        records = all
-        records.select do |record|
+      # @param [Hash] opts The query options.
+      # @option opts [Number] :limit The search limit
+      # @option opts [Number] :offset The search offset
+      # @return [Array<Hash>] The records that satified query
+      def self.where(options, limit: 5, offset: 0)
+        records = all.select do |record|
           # Need to satisfy all options
           options.all? { |key, value| safe_compare_string(value, record[key.to_s]) }
         end
+        records[offset..(offset + limit - 1)] || []
       end
 
       # Fetch all record for the model.
       # This function will load json file and convert its' content to array of hash
       # Ie: { name: "Hung", age: 25 } will query for record with name="Hung" and age=25
-      # @return [Array<Hash>] The records loaded from json file
+      # @return [Array<Hash>] The records loaded from json file or empty array if parse error
       def self.all
         file = File.read(self::FILE_PATH)
         JSON.parse(file)
+      rescue JSON::ParserError
+        []
       end
 
       # Compare string with the other unkown type value.
