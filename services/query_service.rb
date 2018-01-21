@@ -31,7 +31,7 @@ module NinetySeconds
       # @option opts [String] :format The format to obtain presenter
       # @option opts [Number] :limit The limit for query execution later on
       # @option opts [Number] :offset The offset for query execution later on
-      def initialize(resource:, queries: [], format: PRESENTERS.keys[0], limit: 5, offset: 0)
+      def initialize(resource: nil, queries: [], format: PRESENTERS.keys[0], limit: 5, offset: 0)
         @resource = resource ? resource.to_sym : nil
         @format = format ? format.to_sym : nil
         @limit = limit
@@ -54,7 +54,7 @@ module NinetySeconds
       # Validate if the query is valid
       def valid?
         @errors << ERR_MISSING_RESOURCE if @resource.nil?
-        @errors << ERR_RESOURCE_INVALID unless RESOURCE_MODELS.key? @resource
+        @errors << ERR_RESOURCE_INVALID if @resource && !RESOURCE_MODELS.key?(@resource)
         @errors << ERR_FORMAT_INVALID unless PRESENTERS.key? @format
         @errors << ERR_QUERY_INVALID unless @queries.all? { |query| /.+=.+/.match(query) }
 
