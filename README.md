@@ -37,6 +37,11 @@ ruby main.rb -r user -f json
 ruby main.rb -r user -h
 ```
 
+7. Run tests
+```
+bundle exec rspec spec/
+```
+
 ### Evaluation Criteria
 1. Extensibility (separation of concerns)
 The project is splitted into these following directories:
