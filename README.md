@@ -34,7 +34,7 @@ ruby main.rb -r user -f json
 
 6. Display helps
 ```
-ruby main.rb -r user -h
+ruby main.rb -h
 ```
 
 7. Run tests
