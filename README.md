@@ -58,6 +58,10 @@ The project is splitted into these following directories:
 
 4. Performance
 - Support `limit` and `offset` as CLI options. When data set become larger, user can paginate their query commands.
+- The solution load the whole file to memory, and loop through the whole array (O(n) in time complexity) to perform a query. This approach will not work well if data set increases.
+- Building an in-memory tree before searching has been taking into consideration, so that search can be faster. However, building an in-memory tree costs time and memory (to hold that data stucture), and it is redundant in real life, because query optimization should be a job of a database engine.
+- To improve search speed when data set increase, we should use a proper DB. So we can rely on it indexes to make query faster.
+- In memory cache or Redis cache of a search results might be helpful too, if the same search is reapeat frequently in the application.
 
 5. Robustness
 - Report errors for invalid commands, missing resources, invalid resources, invalid format, invalid query ...
